@@ -1,0 +1,9 @@
+{
+  "private": true,
+  "scripts": {
+    "test": "ava --verbose"
+  },
+  "dependencies": {
+    "ava": "^0.25.0"
+  }
+}
