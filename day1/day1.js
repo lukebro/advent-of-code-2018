@@ -3,11 +3,13 @@
  * https://adventofcode.com/2018/day/1
  */
 module.exports = {
-    getFrequency: function(input) {
+    // get frequency
+    one: function(input) {
         return input.reduce((acc, next) => acc + next, 0);
     },
 
-    duplicateFrequency: function(input) {
+    // find the duplicate frequency
+    two: function(input) {
         let duplicate = null;
         let frequency = 0;
         // start with initial frequency
