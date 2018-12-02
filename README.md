@@ -3,3 +3,6 @@
 * Day 1: Chronal Calibration
   * [Puzzle](https://adventofcode.com/2018/day/1)
   * [Solution](./day1/day1.js)
+* Day 2: Inventory Management System
+  * [Puzzle](https://adventofcode.com/2018/day/2)
+  * [Solution](./day2/day2.js)
