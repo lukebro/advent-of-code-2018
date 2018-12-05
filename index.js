@@ -1,7 +1,15 @@
-const fs = require('fs');
+const { readdirSync } = require('fs');
+const { resolve } = require('path');
 
-module.exports = {
-    read: file => {
-        return fs.readFileSync(file, 'utf8').toString();
-    }
-};
+console.log(`
+/**
+ * Advent of Code 2018
+ */
+`);
+
+// Dynamically require all day* and run them.
+readdirSync(__dirname)
+    .filter(d => /^day\d/.test(d))
+    .forEach(d => {
+        require(resolve(__dirname, d));
+    });

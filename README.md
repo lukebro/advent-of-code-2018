@@ -1,8 +1,17 @@
-# [Advent of Code 2018](https://adventofcode.com/2018) [![Build Status](https://api.travis-ci.org/lukebro/advent-of-code-2018.svg)](https://travis-ci.org/lukebro/advent-of-code-2018)
+# [Advent of Code 2018](https://adventofcode.com/2018)
 
-* Day 1: Chronal Calibration
-  * [Puzzle](https://adventofcode.com/2018/day/1)
-  * [Solution](./day1/day1.js)
-* Day 2: Inventory Management System
-  * [Puzzle](https://adventofcode.com/2018/day/2)
-  * [Solution](./day2/day2.js)
+## Goal
+
+I'm not concerned with runtime efficiency or Big O complexity when solving these problems. Really I'm just trying to get a working solution and that's about it. My goal is to just try and finish the thing this year 🤞.
+
+Allowing myself to use `lodash` as a utility. As of now haven't had a need for it, perhaps later. I'm open to use other open sourced libraries as utilities as long as they don't complete the puzzle for me.
+
+## Progress
+
+|  Day  | Completed |
+| :---: | :-------: |
+| Day 1 |    ✅     |
+| Day 2 |    ✅     |
+| Day 3 |    ✅     |
+| Day 4 |    ❌     |
+| Day 5 |    ✅     |

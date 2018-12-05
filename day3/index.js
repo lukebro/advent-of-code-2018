@@ -1,16 +1,12 @@
-const { read } = require('../index');
-
+console.log(`
 /**
+ * --- Day 3: No Matter How You Slice It ---
  * https://adventofcode.com/2018/day/3
- *
- * Unfortunately this one doesn't really come with
- * any real test data so can't TDD it.
- *
- * This won't be a module, just all inline.
- *
  */
+`);
 
-console.log('--- Day 3: No Matter How You Slice It ---');
+const { readFileSync } = require('fs');
+const { resolve } = require('path');
 
 // I wrote this by myself, thanks Keith.
 // Pattern matches all important info in this type of string: #123 @ 3,2: 5x4
@@ -30,7 +26,7 @@ const parse = input => {
     });
 };
 
-let input = parse(read(`${__dirname}/input.txt`));
+let input = parse(readFileSync(resolve(__dirname, 'input.txt'), 'utf8'));
 
 // was going to do this, but kinda inefficient
 // to create the full empty grid with no guarantee we would fill it all
@@ -51,16 +47,15 @@ input.forEach(claim => {
             const stringId = `${x + j}:${y + i}`;
 
             if (grid.has(stringId) && !duplicates.has(stringId)) {
-                duplicates.add(stringId)
+                duplicates.add(stringId);
             } else {
                 grid.add(stringId);
             }
-
         }
     }
 });
 
-console.log("Part 1: Number of duplicate plots: ", duplicates.size);
+console.log('Part 1:', 'Number of duplicate plots:', duplicates.size);
 
 // Part 2, think we need to loop through all claims and just check for any overlap.
 
@@ -126,4 +121,8 @@ for (let i = 0; i < input.length; ++i) {
     }
 }
 
-console.log("Part 2: Claim that does not overlap: ", claimThatDoesNotOverlap.id);
+console.log(
+    'Part 2:',
+    'Claim that does not overlap:',
+    claimThatDoesNotOverlap.id
+);

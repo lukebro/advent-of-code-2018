@@ -1,18 +1,17 @@
-const { read } = require('../index');
-
-console.log('--- Day 5: Alchemical Reduction ---');
-
+console.log(`
 /**
  * --- Day 5: Alchemical Reduction ---
  * https://adventofcode.com/2018/day/5
  */
+`);
 
-const parse = input => input.split('');
+const { readFileSync } = require('fs');
+const { resolve } = require('path');
+
+let input = readFileSync(resolve(__dirname, 'input.txt'), 'utf8').split('');
 
 // determine offset between lower and upper
 const offset = 'a'.charCodeAt(0) - 'A'.charCodeAt(0);
-
-let input = parse(read(`${__dirname}/input.txt`));
 
 /**
  * This is pretty cool, after thinking about this more...
@@ -56,7 +55,8 @@ const react = input => {
 const fullyReactedPolymer = react(input);
 
 console.log(
-    'Part 1: Number of units remaining after fully reacting the polymer: ',
+    'Part 1:',
+    'Number of units remaining after fully reacting the polymer: ',
     fullyReactedPolymer.length
 );
 
@@ -104,6 +104,7 @@ uniqueUnits.forEach(unit => {
 });
 
 console.log(
-    'Part 2: Length of the shortest polymer you can produce: ',
+    'Part 2:',
+    'Length of the shortest polymer you can produce: ',
     shortestPolymer.length
 );

@@ -1,29 +1,17 @@
-const { read } = require('../index');
-
-//-
-//-
-//-  I did this completely wrong. Need to redo it.
-//-
-//-
-
+console.log(`
 /**
+ * [WIP]
+ * --- Day 4: Repose Record ---
  * https://adventofcode.com/2018/day/4
- *
- *
- * Going to assume that guards fall asleep only when time 00.
- *
- *
- * @TODO: You read this really wrong... BACK TO DRAWING BOARD!
  */
+`);
 
-console.log('--- Day 4: Repose Record ---');
+const { readFileSync } = require('fs');
+const { resolve } = require('path');
 
-const parse = (input) => input.split('\n').sort();
-
-
-const input = parse(read(`${__dirname}/input.txt`));
-
-console.log(input);
+const input = readFileSync(resolve(__dirname, 'input.txt'), 'utf8')
+    .split('\n')
+    .sort();
 
 // sleep records
 const records = [];
@@ -46,10 +34,9 @@ const guardId = new RegExp(/Guard\s\#(\d+)/);
 let builder = {};
 
 input.forEach(record => {
-
     const min = getTime.exec(record)[1];
 
-    switch(true) {
+    switch (true) {
         case beginsShift.test(record):
             builder.id = guardId.exec(record)[1];
             break;
@@ -79,11 +66,18 @@ input.forEach(record => {
 let sleepiest = records[0];
 
 records.forEach(record => {
-    if(record.asleep > sleepiest.asleep) {
+    if (record.asleep > sleepiest.asleep) {
         sleepiest = record;
     }
 });
 
 console.log('Part 1:');
-console.log(`The sleepiest guard is #${sleepiest.id} being asleep ${sleepiest.asleep} minutes.`);
-console.log(`Which means the answer is (${sleepiest.id}x${sleepiest.asleep}): `, sleepiest.id * sleepiest.asleep);
+console.log(
+    `The sleepiest guard is #${sleepiest.id} being asleep ${
+        sleepiest.asleep
+    } minutes.`
+);
+console.log(
+    `Which means the answer is (${sleepiest.id}x${sleepiest.asleep}): `,
+    sleepiest.id * sleepiest.asleep
+);
