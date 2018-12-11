@@ -1,6 +1,5 @@
 console.log(`
 /**
- * [WIP]
  * --- Day 4: Repose Record ---
  * https://adventofcode.com/2018/day/4
  */
@@ -71,13 +70,49 @@ records.forEach(record => {
     }
 });
 
-console.log('Part 1:');
+// Sleepiest guard is sleepiest.id.  Now we need to the minute he sleeps the most.
+
+const minutes = Array(60).fill(0);
+let id = 0;
+let start = 0;
+let end = 0;
+
+input.forEach(record => {
+    const min = getTime.exec(record)[1];
+
+    switch (true) {
+        case beginsShift.test(record):
+            id = guardId.exec(record)[1];
+            break;
+        case fallsAsleep.test(record):
+            start = parseInt(min);
+            break;
+        case wakesUp.test(record):
+            if (id !== sleepiest.id) {
+                break;
+            }
+
+            end = parseInt(min);
+            // increment the minutes
+            for (let i = start; i < end; i++) {
+                minutes[i]++;
+            }
+            break;
+    }
+
+});
+
+
+let longestMinute = 0;
+
+minutes.forEach((count, minute) => {
+    if (minutes[longestMinute] > count) {
+        longestMinute = minute;
+    }
+});
+
 console.log(
-    `The sleepiest guard is #${sleepiest.id} being asleep ${
-        sleepiest.asleep
-    } minutes.`
-);
-console.log(
-    `Which means the answer is (${sleepiest.id}x${sleepiest.asleep}): `,
-    sleepiest.id * sleepiest.asleep
+    'Part 1:',
+    'The sleepiest guard ID multiplied by there minute most slept is:',
+    sleepiest.id * longestMinute
 );
